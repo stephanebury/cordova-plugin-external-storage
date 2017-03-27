@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-externalstorage" version="0.0.1">
+
+    <name>External Storage</name>
+    <description>This plugin allows you to enable external storage for Cordova. (The Original Version)</description>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=2.8.0" />
+    </engines>
+
+    <js-module src="www/ExternalStorage.js" name="ExternalStorage">
+        <clobbers target="cordova.plugins.externalstorage" />
+    </js-module>
+
+    <!-- Android -->
+    <platform name="android">
+        <source-file src="src/android/io/github/sbury/cordova/plugins/externalstorage/ExternalStorage.java" target-dir="src/io/github/sbury/cordova/plugins/externalstorage" />
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExternalStorage">
+                <param name="android-package" value="io.github.sbury.cordova.plugins.externalstorage.ExternalStorage" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+    </platform>
+</plugin>
